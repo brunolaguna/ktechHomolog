@@ -1,5 +1,4 @@
 const hostname = window.location.hostname
-console.log(hostname)
 
 if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' ) {
 
