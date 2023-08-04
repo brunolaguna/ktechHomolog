@@ -1,13 +1,12 @@
 const hostname = window.location.hostname
-const pathname = window.location.pathname
 
-if ( hostname === 'ktechdigital-hsm-afc92f4d4c18.herokuapp.com' && pathname === '/' ) {
+if ( hostname === 'ktechdigital-hsm-afc92f4d4c18.herokuapp.com' ) {
 
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';
-    var redirect_uri = 'https://ktechdigital-hsm-afc92f4d4c18.herokuapp.com/'
+    var redirect_uri = 'ktechdigital-homolog-34fe4008c979.herokuapp.com'
 
-} else if ( hostname === 'localhost' && pathname === '/' ) {
+} else if ( hostname === 'localhost' ) {
 
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';
