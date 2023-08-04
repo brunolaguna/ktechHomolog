@@ -5,7 +5,7 @@ if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' ) {
 
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';
-    var redirect_uri = 'ktechdigital-homolog-34fe4008c979.herokuapp.com'
+    var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
 
 } else if ( hostname === 'localhost' ) {
 
