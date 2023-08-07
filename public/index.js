@@ -163,11 +163,6 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
           newCell.innerHTML = dados[r][c]
 
-          //if ( dados[r][c] == '' || dados[r][c] == '\r' ) {
-          //  dados[r].pop()
-          //  console.log(dados[r])
-          //}
-
         }
 
         for( let i = 4; i < dados[r].length; i++ ) {
@@ -212,6 +207,13 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
     
               c++
     
+            }
+
+            if ( r == rowData.length - 2 ) {
+  
+              button.disabled = false
+              button.innerHTML = 'Enviar HSM'
+  
             }
 
             return

@@ -2,15 +2,6 @@ export function sendHSM(client_name, email, telefone, fila, elementname, inputPa
 
   return new Promise((resolve, reject) => {
 
-    /* For debug
-    console.log(inputParams)
-    console.log('Nomde do cliente: ',client_name)
-    console.log('E-mail: ',email)
-    console.log('userID: ',userId)
-    console.log('Tel: ',telefone)
-    console.log('Fila: ',fila)
-    */
-
     const headers = {
       "Content-Type": "application/json",
       "x-api-key": "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
@@ -62,7 +53,7 @@ export function sendHSM(client_name, email, telefone, fila, elementname, inputPa
 
       .then( function (response) { resolve(response.status) } )
 
-      .catch( function (error) { console.log(error); }) ;
+      .catch( function (error) { console.log(error) })
 
   })
 } 
