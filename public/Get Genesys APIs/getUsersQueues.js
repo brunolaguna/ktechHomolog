@@ -2,9 +2,7 @@ import { accessToken, userID } from '../getAccessToken.js';
 
 var select_fila
 
-function getUserQueue(userID) {
-  
-    return axios.get(`api/api/v2/users/${userID}/queues`, { headers: { Authorization: `Bearer ${accessToken}` } })
+axios.get(`api/api/v2/users/${userID}/queues`, { headers: { Authorization: `Bearer ${accessToken}` } })
   
     .then(response =>{
   
@@ -37,10 +35,7 @@ function getUserQueue(userID) {
         
         alert('O serviço não está disponível no momento!')
         console.error(error)
-
-  }
-)}
-
-getUserQueue(userID)
+        
+    })
 
 export { select_fila }
