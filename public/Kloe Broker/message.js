@@ -213,4 +213,15 @@ var template_hsm = [
   },
 ]
 
-export { template_hsm }
+let sort_templates = []
+for ( let i = 0; i < template_hsm.length; i++ ) {
+  sort_templates[i] = template_hsm[i].elementname
+
+}
+
+
+sort_templates.sort()
+
+
+
+export { template_hsm, sort_templates }

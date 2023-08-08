@@ -1,7 +1,7 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
 import('./toggleButtonStyle.js')
 import { accessToken, userID, email } from './getAccessToken.js';
-import { template_hsm } from './Kloe Broker/message.js'
+import { template_hsm, sort_templates } from './Kloe Broker/message.js'
 import { swalFire } from './swal_fire.js';
 import { sendHSM } from './Kloe Broker/fetchBroker.js';
 
@@ -38,11 +38,11 @@ cell_phone.addEventListener('input', (event) => {
 // Var
 let msg = document.getElementById('mensagem')
 
-for (let i = 0; i < template_hsm.length; i++) {
+for (let i = 0; i < sort_templates.sort().length; i++) {
 
     const elementName_opt = document.createElement('option')
-    elementName_opt.value = template_hsm[i].elementname
-    elementName_opt.text = template_hsm[i].elementname
+    elementName_opt.value = sort_templates[i]
+    elementName_opt.text = sort_templates[i]
     msg.appendChild(elementName_opt)
     
 }
