@@ -30,7 +30,6 @@ export function sendHSM(client_name, email, telefone, fila, elementname, inputPa
       "context": {
         "user":{
           "name": `${client_name}`,
-          "SF_URLPop": "0016e00002wOkJMAA0",
           "email": `${email}`,
           "cpf": "",
           "nome": `${client_name}`,
