@@ -1,24 +1,21 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
 import('./toggleButtonStyle.js')
 import { accessToken, userID, email } from './getAccessToken.js';
-import { template_hsm, sort_templates } from './Kloe Broker/message.js'
+import { template_hsm, msg } from './sort_messages.js'
+import { automaticAgentName } from './Functions/getAgentName.js';
 import { swalFire } from './swal_fire.js';
 import { sendHSM } from './Kloe Broker/fetchBroker.js';
+import { bulkHSM_mode } from './sendBulkHSM.js';
 
-/* After, Analyze this function
-const name = document.getElementById('nome')
-name.addEventListener('input', (event) => {
-  
+const cient_name = document.getElementById('client_name')
+
+cient_name.addEventListener('input', (event) => 
+{  
   var input = event.target.value
-  
-  // Replace string and space to ''
   input = input.replace(/[^\p{L}\p{M}´~^\s]/gu, '');
-
-  
   event.target.value = input
   }
 )
-*/
 
 // Function FormatPhoneNumber
 const cell_phone = document.getElementById('telefone')
@@ -35,28 +32,25 @@ cell_phone.addEventListener('input', (event) => {
   }
 )
 
-// Var
-let msg = document.getElementById('mensagem')
+function clientName_input_mirror() 
+{
+  let client_param = document.getElementById('Cliente')
 
-for (let i = 0; i < sort_templates.sort().length; i++) {
-
-    const elementName_opt = document.createElement('option')
-    elementName_opt.value = sort_templates[i]
-    elementName_opt.text = sort_templates[i]
-    msg.appendChild(elementName_opt)
-    
+  if ( client_param !== null ) 
+  {
+    client_param.value = document.getElementById('client_name').value
+    client_param.disabled = true
+  }
 }
 
-// Vars
 var previous_message = document.getElementById('previaMensagem')
 var variaveis
 
 msg.addEventListener("change", () => {
 
-  for( let i = 0; i < template_hsm.length; i++ ) {
-
+  for( let i = 0; i < template_hsm.length; i++ ) 
+  {
     if ( msg.value === template_hsm[i].elementname ) { previous_message.value = template_hsm[i].body }
-
   }
 
   //adjustTextareaHeight
@@ -93,181 +87,33 @@ msg.addEventListener("change", () => {
       input.placeholder = input_ID
 
       create_input_div.appendChild(input);
+      automaticAgentName()
 
     }
   }
+
+  clientName_input_mirror()
+
+})
+
+document.getElementById('client_name').addEventListener('input', () => 
+{
+  clientName_input_mirror()
 })
 
 document.getElementById('hsm_form').addEventListener('submit', async function (event) {
 
   event.preventDefault()
 
-  var button = document.querySelector('button')
-  var file = document.getElementById('file_input').files
+  var button_sendHSM = document.querySelector('#sendHSM')
 
-  if ( file.length > 0 && document.querySelector('.toggle-input').checked ) {
-
-    const extension = file[0].name.split('.')
-
-    if ( extension[1] !== 'csv' ) {
-
-      swalFire('AVISO', 'Favor inserir um arquivo com extensão ".csv" para continuar.', 'warning', 'lightskyblue', 'lightskyblue', 'OK')
-      return
-
-    }
-
-    button.innerHTML = `<div class="loader"></div>`
-    button.disabled = true
-
-    var data = file[0]
-
-    const readFile = new FileReader()
-    readFile.readAsText(data)
-
-    readFile.onload = async function send_bulkHSM(e) {
-
-      var csvdata = e.target.result
-
-      var rowData = csvdata.split('\n')
-
-      for ( let i = 0; i < rowData.length; i++ ) { rowData[i] = rowData[i].replace('\r', '') }
-
-      var tbodyEl = document.getElementById('tablecsvdata').getElementsByTagName('tbody')[0];
-
-      tbodyEl.innerHTML = "";
-
-      let null_row = rowData.length - 1
-      delete rowData[null_row]
-      
-      let localizable_params_bulkHSM_index = 0
-      let localizable_params_bulkHSM = []
-      let dados = []
-
-      for( let r = 0; r < rowData.length; r++ ) {
-
-        if ( r === rowData.length - 1) { return }
-
-        var newRow = tbodyEl.insertRow()
-
-        dados[r] = rowData[r].split(';')
-
-        for( var c = 0; c < dados[r].length; c++ ) {
-
-          while ( dados[r][1].length !== 11 && dados[r][1].length !== 10 || isNaN(dados[r][1]) === true ) {
-
-            dados[r][1] = prompt(`Você inseriu um valor inválido na linha ${r + 1} coluna 1.\nPor favor, insira um valor válido:`, `${dados[r][1]}`)
-
-          }
-
-          var newCell = newRow.insertCell()
-
-          newCell.innerHTML = dados[r][c]
-
-        }
-
-        for( let i = 4; i < dados[r].length; i++ ) {
-
-          localizable_params_bulkHSM[localizable_params_bulkHSM_index] = dados[r][i]
-          localizable_params_bulkHSM_index++
-
-        }
-
-        var data_hsm = {
-          Telefone: dados[r][1],
-          AccessToken: accessToken
-        }
-
-        await fetch('/enviarHSM', {
-
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data_hsm)
-    
-        })
-    
-        .then(async(res)=>{
-    
-          const clientInteracting = await res.json()
-    
-          if (clientInteracting.client == true) {
-
-            while ( c < 9 ) {
-
-              newCell = newRow.insertCell()
-    
-              if ( c == 8 ) {
-    
-                newCell.innerHTML = 'Interagindo'
-                newCell.style.backgroundColor = "lightskyblue"
-                newCell.style.color = "red"
-    
-              }
-    
-              c++
-    
-            }
-
-            if ( r == rowData.length - 2 ) {
-  
-              button.disabled = false
-              button.innerHTML = 'Enviar HSM'
-  
-            }
-
-            return
-            
-          } else {
-
-            const status = await sendHSM(dados[r][0], email, dados[r][1], dados[r][2], dados[r][3], localizable_params_bulkHSM, userID, variaveis)
-  
-            while ( c < 9 ) {
-  
-              newCell = newRow.insertCell()
-  
-              if ( status === 200 && c == 8 ) {
-  
-                newCell.innerHTML = 'Enviado'
-                newCell.style.backgroundColor = "#BC3F86"
-                newCell.style.color = "white"
-  
-              } else if ( c == 8 ){
-  
-                newCell.innerHTML = 'Erro'
-                newCell.style.backgroundColor = "red"
-  
-              }
-  
-              c++
-  
-            }
-  
-            localizable_params_bulkHSM = []
-            localizable_params_bulkHSM_index = 0
-            
-            if ( r == rowData.length - 2 ) {
-  
-              button.disabled = false
-              button.innerHTML = 'Enviar HSM'
-  
-            }
-          }
-        })
-
-        .catch((error)=>{
-          console.error('Error:', error)
-        })
-        
-      }
-    }
-  }
+  bulkHSM_mode(button_sendHSM, accessToken, email, userID)
   
   if ( document.querySelector('.toggle-input').checked == false ) {
 
-  button = document.querySelector('button')
-  button.disabled = true
-  button.innerHTML = `<div class="loader"></div>`
+  button_sendHSM = document.querySelector('#sendHSM')
+  button_sendHSM.disabled = true
+  button_sendHSM.innerHTML = `<div class="loader"></div>`
   
   // Get form input values using the form elements collection
   const form = event.target; // Get the form element
@@ -297,7 +143,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
       AccessToken: accessToken
     }
 
-    fetch('/enviarHSM', {
+    fetch('/verifyClient', {
 
       method: 'POST',
       headers: {
@@ -315,14 +161,14 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
         swalFire('Cliente Interagindo!', 'O cliente já está em outro atendimento, aguarde a interação ser finalizada para o envio de HSM!', 'warning', 'lightskyblue', 'lightskyblue', 'OK')
     
-        button.disabled = false
-        button.innerHTML = 'Enviar HSM'
+        button_sendHSM.disabled = false
+        button_sendHSM.innerHTML = 'Enviar HSM'
     
       } else {
 
       if (res.ok) {
 
-        const client_name = document.getElementById('nome').value
+        const client_name = document.getElementById('client_name').value
 
         let shippingStatus = await sendHSM(client_name, email, telefone, fila, elementname, inputParams, userID, variaveis)
         
@@ -330,8 +176,8 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
           
           swalFire('Erro', 'Erro ao enviar o HSM!\n', 'error', '#b82c2c', 'OK')
 
-          button.disabled = false
-          button.innerHTML = 'Enviar HSM'
+          button_sendHSM.disabled = false
+          button_sendHSM.innerHTML = 'Enviar HSM'
 
         } else {
 
@@ -339,8 +185,8 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
           this.reset()
 
-          button.disabled = false
-          button.innerHTML = 'Enviar HSM'
+          button_sendHSM.disabled = false
+          button_sendHSM.innerHTML = 'Enviar HSM'
 
           }
       }

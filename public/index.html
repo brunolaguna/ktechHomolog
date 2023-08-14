@@ -15,46 +15,48 @@
 
     <div id="row" class="row">
 
-      <a href="https://ktechdigital-hsm-afc92f4d4c18.herokuapp.com/"><img title="Voltar" src="https://ktech.digital/wp-content/uploads/2021/12/Logo-lado.png" alt="Ktech Digital logo"></a>
+      <img title="Voltar" src="https://ktech.digital/wp-content/uploads/2021/12/Logo-lado.png" alt="Ktech Digital logo">
 
       <form id="hsm_form" method="post" action="/enviarHSM">
 
-        <h1>HSM EM MASSA</h1>
+        <h1 class="hidden_element">HSM EM MASSA</h1>
 
-        <label for="nome">Nome do cliente</label>
+        <label for="client_name" class="first_page_hidden_element">Nome do cliente</label>
         <input
           type="text"
           placeholder="José Farias"
-          id="nome"
+          class="first_page_hidden_element"
+          id="client_name"
           required
         />
 
-        <label for="telefone">Telefone do cliente</label>
+        <label for="telefone" class="first_page_hidden_element">Telefone do cliente</label>
         <input
           type="tel"
           placeholder="11985663898"
+          class="first_page_hidden_element"
           id="telefone"
           required
           maxlength="11"
           pattern="\d{2}\d{4,5}\d{4}"
         />
 
-        <label for="fila">Escolha sua fila</label>
-        <select name="fila" id="fila" required>
+        <label for="fila" class="first_page_hidden_element">Escolha sua fila</label>
+        <select name="fila" class="first_page_hidden_element" id="fila" required>
           <option value="" hidden>Selecione...</option>
         </select>
 
-        <label for="mensagem">Escolha sua mensagem</label>
-        <select name="mensagem" id="mensagem" required>
+        <label for="mensagem" class="first_page_hidden_element">Escolha sua mensagem</label>
+        <select name="mensagem" class="first_page_hidden_element" id="mensagem" required>
           <option value="" hidden>Selecione...</option>
         </select>
         
-        <p for="file" id="bulkHSM_label">Selecione um arquivo CSV</p>
-        <input type="file" name="file" id="file_input" accept=".csv" value="Selecione um arquivo CSV" disabled required>
+        <p for="file" class="hidden_element" id="bulkHSM_label">Selecione um arquivo CSV</p>
+        <input type="file" name="file" class="hidden_element" id="file_input" accept=".csv" value="Selecione um arquivo CSV" disabled required>
 
-        <a href="https://ktechdigital-hsm-afc92f4d4c18.herokuapp.com/example.csv" id="file_example" hidden>exemplo.csv</a>
+        <a href="https://ktechdigital-hsm-afc92f4d4c18.herokuapp.com/example.csv" class="hidden_element" id="file_example" hidden>exemplo.csv</a>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper hidden_element">
           <table id="tablecsvdata" border="1" style="border-collapse: collapse;">
             <thead>
               <tr>
@@ -77,8 +79,8 @@
           </table>
         </div>
 
-        <label for="previaMensagem">Prévia da mensagem</label>
-        <textarea name="previaMensagem" id="previaMensagem" placeholder="Selecione uma mensagem para carregá-la." disabled style="height: 100px;"></textarea>
+        <label for="previaMensagem" class="first_page_hidden_element">Prévia da mensagem</label>
+        <textarea name="previaMensagem" class="first_page_hidden_element" id="previaMensagem" placeholder="Selecione uma mensagem para carregá-la." disabled style="height: 100px;"></textarea>
 
         <div id="create_input_div"></div>
 
@@ -90,7 +92,7 @@
 
        <br>
 
-        <button type="submit">Enviar HSM</button>
+        <button type="submit" id="sendHSM">Enviar HSM</button>
       </form>
     </div>
 

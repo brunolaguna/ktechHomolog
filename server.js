@@ -14,14 +14,11 @@ app.use(express.urlencoded({ extended: true }))
 // Configurar o diretório para arquivos estáticos (CSS, imagens, etc.)
 app.use(express.static('public'));
 
-app.post('/enviarHSM', async (req, res) => {
-
-    //console.log(req.body.AccessToken)
-    
+app.post('/verifyClient', async (req, res) =>
+{    
     const clientInteracting = await queryConversationDetails(req.body.Telefone, req.body.AccessToken)
 
     res.status(200).json({ client: clientInteracting })
-
 })
 
 // Start server

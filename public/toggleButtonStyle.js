@@ -1,8 +1,24 @@
 import { select_fila } from './Get Genesys APIs/getUsersQueues.js';
 import { previous_message, cell_phone, msg } from './index.js'
 
-document.querySelector('.toggle-input').addEventListener('click', () => {
-  
+document.querySelector('.toggle-input').addEventListener('click', () => 
+{
+  /*
+  const remove_or_add_classes = document.querySelectorAll('.first_page_hidden_element')
+
+  for ( let i = 0; i < remove_or_add_classes.length; i++ )
+  {
+    if ( i % 2 !== 0 )
+    {
+      remove_or_add_classes[i].classList.add('hidden_element_on')
+    } 
+    else
+    {
+      remove_or_add_classes[i].classList.remove('hidden_element_on')
+    }
+  }
+
+  return*/  
     var select_element = document.querySelectorAll('select')
     var label_elements = document.querySelectorAll('label')
     var input_element = document.querySelectorAll('input')
@@ -31,6 +47,8 @@ document.querySelector('.toggle-input').addEventListener('click', () => {
       }
   
       //console.log(input_element)
+      document.querySelector('.table-wrapper').style.marginTop = '60px'
+      document.getElementById('client_name').style.position = 'absolute'
   
       previous_message.style.opacity = '0'
       previous_message.style.zIndex = '-1'
@@ -95,13 +113,15 @@ document.querySelector('.toggle-input').addEventListener('click', () => {
         }
   
       }
+
+      document.querySelector('.table-wrapper').style.marginTop = '0px'
+      document.getElementById('client_name').style.position = 'static'
   
       cell_phone.style.position = 'static'
       select_fila.style.position = 'static'
       msg.style.position = 'static'
       previous_message.style.position = 'static'
   
-      console.log(file_example)
       file_example.style.opacity = '0'
       file_example.hidden = true
       previous_message.style.opacity = '1'

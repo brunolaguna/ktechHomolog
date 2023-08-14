@@ -36,6 +36,7 @@ if(window.location.hash) {
             
             userDatas[0] = data.email
             userDatas[1] = data.id
+            userDatas[2] = data.name
             return userDatas
 
         }
@@ -59,5 +60,6 @@ if(window.location.hash) {
 
 var email = userDatas[0]
 var userID = userDatas[1]
+var agentName = userDatas[2]
 
-export { accessToken, userID, email}
+export { accessToken, userID, email, agentName}
