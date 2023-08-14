@@ -157,11 +157,6 @@ var template_hsm = [
     "namespace": "b28a8aff-6dce-4fbe-ac4f-b9d1063c1169"
   },
   {
-    "elementname": "reagendamento_entrega", /* ATENCAOO*/
-    "body": `Olá ${client}, tudo bem? Recebemos sua solicitação referente ao pedido ${orderNumber}. A nova data de entrega será ${date}`,
-    "namespace": "3df0450a-4da8-4021-b03a-0481a5d4bf00"
-  },
-  {
     "elementname": "continuacao_atendimento",
     "body": `Olá ${client}, aqui é ${agent}. Podemos continuar seu atendimento aqui pelo WhatsApp.`,
     "namespace": "071fd265-c913-43c9-8dd5-5a6ceeeaa750"

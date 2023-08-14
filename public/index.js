@@ -1,6 +1,6 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
 import('./toggleButtonStyle.js')
-import { accessToken, userID, email } from './getAccessToken.js';
+import { accessToken } from './getAccessToken.js';
 import { template_hsm, msg } from './sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
 import { swalFire } from './swal_fire.js';
@@ -107,7 +107,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
   var button_sendHSM = document.querySelector('#sendHSM')
 
-  bulkHSM_mode(button_sendHSM, accessToken, email, userID)
+  bulkHSM_mode(button_sendHSM, accessToken)
   
   if ( document.querySelector('.toggle-input').checked == false ) {
 
@@ -171,7 +171,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
         const HSMmode = 'individualHSM'
         const client_name = document.getElementById('client_name').value
 
-        let shippingStatus = await sendHSM(client_name, email, telefone, fila, elementname, inputParams, userID, HSMmode)
+        let shippingStatus = await sendHSM(client_name, telefone, fila, elementname, inputParams, HSMmode)
         
         if ( shippingStatus != 200 ) {
           

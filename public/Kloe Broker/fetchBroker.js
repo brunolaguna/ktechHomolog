@@ -1,4 +1,6 @@
-export function sendHSM(client_name, email, telefone, fila, elementname, inputParams, userId, HSMmode) {
+import { userID, email, agentName } from '../getAccessToken.js'
+
+export function sendHSM(client_name, telefone, fila, elementname, inputParams, HSMmode) {
 
   return new Promise((resolve, reject) => {
 
@@ -36,10 +38,11 @@ export function sendHSM(client_name, email, telefone, fila, elementname, inputPa
           "customField1": "",
           "midia": "whatsapp",
         },
-        "userId": `${userId}`,
+        "userId": `${userID}`,
         "phone": `55${telefone}`,
         "queue": `${fila}`,
-        "modoHSM": `${HSMmode}`
+        "modoHSM": `${HSMmode}`,
+        "userName": `${agentName}`
       }
     };
 

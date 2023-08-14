@@ -2,7 +2,7 @@ import { check_file_extension } from "./Functions/checkFileExtension.js"
 import { loaderON, loaderOFF } from "./Functions/loader.js"
 import { sendHSM } from "./Kloe Broker/fetchBroker.js"
 
-export async function bulkHSM_mode(button_sendHSM, accessToken, email, userID)
+export async function bulkHSM_mode(button_sendHSM, accessToken)
 {
   var file = document.getElementById('file_input').files
 
@@ -111,7 +111,7 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, email, userID)
           } else {
 
             const HSMmode = 'massaHSM'
-            const status = await sendHSM(dados[r][0], email, dados[r][1], dados[r][2], dados[r][3], localizable_params_bulkHSM, userID, HSMmode)
+            const status = await sendHSM(dados[r][0], dados[r][1], dados[r][2], dados[r][3], localizable_params_bulkHSM, HSMmode)
   
             while ( c < 9 ) {
   
