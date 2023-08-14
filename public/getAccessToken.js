@@ -6,7 +6,14 @@ if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' ) {
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
 
-} else if ( hostname === 'localhost' ) {
+} 
+else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' )
+{
+    var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
+    var ENVIRONMENT = 'mypurecloud.com';
+    var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/'
+} 
+else if ( hostname === 'localhost' ) {
 
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';

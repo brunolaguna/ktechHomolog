@@ -13,17 +13,17 @@ axios.get(`api/api/v2/users/${userID}/roles`, {headers})
 
         const roles = data.data.roles
 
-        for ( let i = 0; i < roles.length; i++) {
-
+        for ( let i = 0; i < roles.length; i++) 
+        {
             if ( roles[i].name === 'PERMISSION_HSM' ) 
             {    
                 var toggle = document.querySelector('.toggle').style
+                document.querySelector('.table-wrapper').style.height = '300px'
                 toggle.position = 'relative'
                 toggle.opacity = '1' 
                 toggle.zIndex = '0'
                 return   
             }
-
         }
 
     })

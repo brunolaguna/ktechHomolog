@@ -36,7 +36,7 @@ function clientName_input_mirror()
 {
   let client_param = document.getElementById('Cliente')
 
-  if ( client_param !== null ) 
+  if ( client_param !== null )
   {
     client_param.value = document.getElementById('client_name').value
     client_param.disabled = true
@@ -168,9 +168,10 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
       if (res.ok) {
 
+        const HSMmode = 'individualHSM'
         const client_name = document.getElementById('client_name').value
 
-        let shippingStatus = await sendHSM(client_name, email, telefone, fila, elementname, inputParams, userID, variaveis)
+        let shippingStatus = await sendHSM(client_name, email, telefone, fila, elementname, inputParams, userID, HSMmode)
         
         if ( shippingStatus != 200 ) {
           

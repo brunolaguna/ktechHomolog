@@ -1,4 +1,4 @@
-export function sendHSM(client_name, email, telefone, fila, elementname, inputParams, userId) {
+export function sendHSM(client_name, email, telefone, fila, elementname, inputParams, userId, HSMmode) {
 
   return new Promise((resolve, reject) => {
 
@@ -38,7 +38,8 @@ export function sendHSM(client_name, email, telefone, fila, elementname, inputPa
         },
         "userId": `${userId}`,
         "phone": `55${telefone}`,
-        "queue": `${fila}`
+        "queue": `${fila}`,
+        "modoHSM": `${HSMmode}`
       }
     };
 

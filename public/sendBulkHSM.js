@@ -57,11 +57,10 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, email, userID)
 
         }
 
-        for( let i = 4; i < dados[r].length; i++ ) {
-
+        for( let i = 4; i < dados[r].length; i++ ) 
+        {
           localizable_params_bulkHSM[localizable_params_bulkHSM_index] = dados[r][i]
           localizable_params_bulkHSM_index++
-
         }
 
         var data_hsm = {
@@ -111,7 +110,8 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, email, userID)
             
           } else {
 
-            const status = await sendHSM(dados[r][0], email, dados[r][1], dados[r][2], dados[r][3], localizable_params_bulkHSM, userID)
+            const HSMmode = 'massaHSM'
+            const status = await sendHSM(dados[r][0], email, dados[r][1], dados[r][2], dados[r][3], localizable_params_bulkHSM, userID, HSMmode)
   
             while ( c < 9 ) {
   
