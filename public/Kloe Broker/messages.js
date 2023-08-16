@@ -206,6 +206,11 @@ var template_hsm = [
     "body": "Olá, tudo bem? \nIdentificamos que você entrou em contato fora do nosso Horário de Atendimento, em que podemos auxiliar em sua compra?",
     "namespace": "50878b72-f6a7-4c7a-8171-7fa54b79f39d"
   },
+  {
+    "elementname": "coleta_pedido",
+    "body": `Olá ${client}, meu nome é ${agent} e gostaria de falar sobre a coleta do seu pedido. Agendamos com a transportadora a coleta no dia ${date} em horário comercial.`,
+    "namespace": "a7901931-7250-4564-9eb7-0ab08632593f"
+  }
 ]
 
 export { template_hsm }
