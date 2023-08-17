@@ -7,7 +7,6 @@ export async function automaticAgentName()
     if ( agentName_input )
     {
         agentName_input.value = agentName
-        //agentName_input.disabled = true
         agentName_input.style.color = 'black'
     }
 }

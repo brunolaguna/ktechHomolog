@@ -9,8 +9,9 @@ const store = '{Loja}'
 const address = '{Endereço}'
 const solicitacao = '{Solicitação}'
 const servico_instalacao = '{Servico_instalacao}'
+const amount = '{Quantidade}'
 
-var template_hsm = [
+var leroyTemplates = [
   {
     "elementname": "agendada_entrega1",
     "body": `Olá, ${client} estou passando para lembrar que seu pedido nº ${orderNumber} está com entrega agendada para dia ${date}. Acompanhe a sua entrega através do rastreamento: ${link}`,
@@ -210,7 +211,12 @@ var template_hsm = [
     "elementname": "coleta_pedido",
     "body": `Olá ${client}, meu nome é ${agent} e gostaria de falar sobre a coleta do seu pedido. Agendamos com a transportadora a coleta no dia ${date} em horário comercial.`,
     "namespace": "a7901931-7250-4564-9eb7-0ab08632593f"
+  },
+  {
+    "elementname": "pontos_expiram",
+    "body": `Olá ${client}! \nSeus ${amount} pontos Leroy Merlin Com Você expiram neste mês. Vá até uma de nossas lojas ou acesse nosso site / app e troque por DESCONTO agora mesmo!`,
+    "namespace": "ca61f0d9-f3c9-4dba-8a24-fb39051cc48d"
   }
 ]
 
-export { template_hsm }
+export { leroyTemplates }

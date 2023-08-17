@@ -10,4 +10,13 @@ const apiProxy = createProxyMiddleware({
     secure: true  // Define como 'true' se a API for acessada via HTTPS
 });
 
-module.exports = { apiProxy }
+const sae1ApiProxy = createProxyMiddleware({
+    target: 'https://api.sae1.pure.cloud',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/apiSae1': ''  // Altere '/api' para o caminho desejado para o proxy
+    },
+    secure: true  // Define como 'true' se a API for acessada via HTTPS
+});
+
+module.exports = { apiProxy, sae1ApiProxy }

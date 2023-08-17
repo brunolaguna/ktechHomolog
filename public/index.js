@@ -1,11 +1,20 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
+import('./orgStyles.js')
 import('./toggleButtonStyle.js')
-import { accessToken } from './getAccessToken.js';
-import { template_hsm, msg } from './sort_messages.js'
+import { accessToken, template_hsm, orgName } from './getAccessToken.js';
+import { getOrgTemplates, msg } from './sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
 import { swalFire } from './swal_fire.js';
 import { sendHSM } from './Kloe Broker/fetchBroker.js';
 import { bulkHSM_mode } from './sendBulkHSM.js';
+
+if ( accessToken )
+{
+  document.querySelector('section').remove()
+  document.querySelector('body').style.overflowY = 'visible'
+}
+
+getOrgTemplates(template_hsm)
 
 const cient_name = document.getElementById('client_name')
 
@@ -107,7 +116,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
   var button_sendHSM = document.querySelector('#sendHSM')
 
-  bulkHSM_mode(button_sendHSM, accessToken)
+  bulkHSM_mode(button_sendHSM, accessToken, orgName)
   
   if ( document.querySelector('.toggle-input').checked == false ) {
 
@@ -124,7 +133,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
     //Log the form input values
 
-    let inputParams = ['Cliente', 'Agente', 'Pedido', 'Protocolo', 'Tentativas', 'Data', 'Link', 'Loja', 'Endereço', 'Solicitação', 'Servico_instalacao']
+    let inputParams = ['Cliente', 'Agente', 'Pedido', 'Protocolo', 'Tentativas', 'Data', 'Link', 'Loja', 'Endereço', 'Solicitação', 'Servico_instalacao', 'Quantidade']
 
     for(let i=0; i<inputParams.length; i++){
       try {
@@ -140,7 +149,8 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
       Fila: fila,
       Mensagem: elementname,
       Parametros: inputParams,
-      AccessToken: accessToken
+      AccessToken: accessToken,
+      Cloud_region: orgName
     }
 
     fetch('/verifyClient', {

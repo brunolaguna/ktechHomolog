@@ -1,6 +1,6 @@
 const { genesysIntervalFilter } = require('./genesysIntervalFilter.js')
 
-async function queryConversationDetails(tel, accessToken) {
+async function queryConversationDetails(tel, accessToken, cloudRegion) {
 
     return new Promise((resolve, reject) => {
 
@@ -8,7 +8,7 @@ async function queryConversationDetails(tel, accessToken) {
         
       const platformClient = require("purecloud-platform-client-v2");
       const client = platformClient.ApiClient.instance;
-      client.setEnvironment(platformClient.PureCloudRegionHosts.us_east_1);
+      client.setEnvironment(platformClient.PureCloudRegionHosts+cloudRegion);
       client.setAccessToken(accessToken);
       let apiInstance = new platformClient.ConversationsApi();
       

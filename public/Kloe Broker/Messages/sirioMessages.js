@@ -1,0 +1,18 @@
+const client = '{Cliente}'
+
+var sirioTemplates = [
+  {
+    "elementname": "ficha_abandonada",
+    "body": `📢 COMUNICADO FACULDADE SÍRIO-LIBANÊS 📢 \nParabéns, ${client}! \nVocê iniciou sua inscrição no nosso processo seletivo e deu o primeiro passo em direção ao seu futuro acadêmico e profissional. \nMas percebemos que ainda não concluiu sua inscrição e, para garantir sua vaga, é necessário completar o formulário de inscrição com todos os seus dados e realizar o pagamento da taxa. \nSe ainda tem dúvida, vamos te lembrar os #5motivos que traduzem nossa excelência: \n➡️ Atividades práticas em ambientes reais;\n➡️ Visitas técnicas a diferentes serviços de saúde; \n➡️ Estrutura moderna, com tecnologia avançada; \n➡️ Mentoria com experts em suas áreas; \n➡️ Programa de empreendedorismo e internacionalização. \nPor isso, não perca essa oportunidade. Atente-se ao período de inscrições e conclua seu formulário agora mesmo pelo link: https://faculdadesiriolibanes.org.br/como-ingressar \nSe preferir, responda essa mensagem que teremos uma equipe pronta para te ajudar. \nEsperamos por você em breve na Faculdade Sírio-Libanês!`,
+  },
+  {
+    "elementname": "inscrito_incompleto",
+    "body": `📢 COMUNICADO FACULDADE SÍRIO-LIBANÊS 📢 \nParabéns, ${client}! \nVocê iniciou sua inscrição no nosso processo seletivo e deu o primeiro passo em direção ao seu futuro acadêmico e profissional.\nMas percebemos que ainda não concluiu sua inscrição e, para garantir sua vaga, é necessário completar o formulário de inscrição com todos os seus dados e realizar o pagamento da taxa.\nSe ainda tem dúvida, vamos te lembrar os #5motivos que traduzem nossa excelência:\n➡️ Atividades práticas em ambientes reais;\n➡️ Visitas técnicas a diferentes serviços de saúde;\n➡️ Estrutura moderna, com tecnologia avançada;\n➡️ Mentoria com experts em suas áreas;\n➡️ Programa de empreendedorismo e internacionalização.\nPor isso, não perca essa oportunidade. Atente-se ao período de inscrições e conclua seu formulário agora mesmo. Basta acessar nosso site, clicar em “Inscreva-se” e inserir seus dados: https://faculdadesiriolibanes.org.br/como-ingressar Se preferir, responda essa mensagem que teremos uma equipe pronta para te ajudar.\nEsperamos por você em breve na Faculdade Sírio-Libanês!`,
+  },
+  {
+    "elementname": "inscrito_nao_pago",
+    "body": `📢 COMUNICADO FACULDADE SÍRIO-LIBANÊS 📢 \nParabéns, ${client}! Você iniciou sua inscrição no nosso processo seletivo e deu o primeiro passo em direção ao seu futuro acadêmico e profissional.\nMas ainda não identificamos o pagamento da sua taxa de inscrição. Ele é necessário para garantir a sua vaga.\nPara escolher a forma de pagamento mais conveniente para você, acesse nosso site, clique em “Inscreva-se” e insira seus dados para ser redirecionado à etapa de pagamento: https://faculdadesiriolibanes.org.br/como-ingressar\nSe ainda ficou alguma dúvida, vamos te lembrar os #5motivos que traduzem nossa excelência:\n➡️ Atividades práticas em ambientes reais;\n➡️ Visitas técnicas a diferentes serviços de saúde;\n➡️ Estrutura moderna, com tecnologia avançada;\n➡️ Mentoria com experts em suas áreas;\n➡️ Programa de empreendedorismo e internacionalização.\nNão perca essa oportunidade. Atente-se ao período de inscrições e conclua seu pagamento. Se preferir, responda essa mensagem que teremos uma equipe pronta para te ajudar.\nEsperamos por você em breve na Faculdade Sírio-Libanês!`,
+  }
+]
+
+export { sirioTemplates }

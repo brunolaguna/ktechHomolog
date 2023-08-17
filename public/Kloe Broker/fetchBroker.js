@@ -1,4 +1,4 @@
-import { userID, email, agentName } from '../getAccessToken.js'
+import { userID, email, agentName, x_api_key } from '../getAccessToken.js'
 
 export function sendHSM(client_name, telefone, fila, elementname, inputParams, HSMmode) {
 
@@ -6,7 +6,7 @@ export function sendHSM(client_name, telefone, fila, elementname, inputParams, H
 
     const headers = {
       "Content-Type": "application/json",
-      "x-api-key": "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
+      "x-api-key": x_api_key
     };
 
     const body = {
