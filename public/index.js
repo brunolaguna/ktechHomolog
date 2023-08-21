@@ -1,7 +1,7 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
 import('./orgStyles.js')
 import('./toggleButtonStyle.js')
-import { accessToken, template_hsm, orgName } from './getAccessToken.js';
+import { pathName, accessToken, template_hsm, orgName } from './getAccessToken.js';
 import { getOrgTemplates, msg } from './sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
 import { swalFire } from './swal_fire.js';
@@ -150,7 +150,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
       Mensagem: elementname,
       Parametros: inputParams,
       AccessToken: accessToken,
-      Cloud_region: orgName
+      Cloud_region: orgName[0]
     }
 
     fetch('/verifyClient', {
@@ -169,7 +169,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
       if (clientInteracting.client == true){
 
-        swalFire('Cliente Interagindo!', 'O cliente já está em outro atendimento, aguarde a interação ser finalizada para o envio de HSM!', 'warning', 'lightskyblue', 'lightskyblue', 'OK')
+        swalFire('Cliente Interagindo!', 'O cliente já está em outro atendimento, aguarde a interação ser finalizada para o envio de HSM!', 'warning', 'gray', 'gray', 'OK')
     
         button_sendHSM.disabled = false
         button_sendHSM.innerHTML = 'Enviar HSM'
@@ -192,7 +192,20 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
         } else {
 
-          swalFire('Sucesso!', 'O HSM foi enviado com sucesso!', 'success', '#A43C92', '#A43C92', 'OK')
+          if ( pathName === '/' )
+          {
+            var success_swalColor = '#BC3F86'
+          }
+          else if ( pathName === '/LeroyMerlin' )
+          {
+            var success_swalColor = '#629411'
+          }
+          else if ( pathName === '/Sirio-Libanes' )
+          {
+            var success_swalColor = '#54A7EC'
+          }
+
+          swalFire('Sucesso!', 'O HSM foi enviado com sucesso!', 'success', success_swalColor, success_swalColor, 'OK')
 
           this.reset()
 

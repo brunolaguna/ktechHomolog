@@ -5,14 +5,31 @@ import { sirioTemplates } from './Kloe Broker/Messages/sirioMessages.js'
 const hostname = window.location.hostname
 const pathName = window.location.pathname
 
-if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' ) 
+if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && pathName === '/' ) 
 {
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
     var template_hsm = leroyTemplates
+    var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
 } 
-else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' )
+else if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && pathName === '/LeroyMerlin' ) 
+{
+    var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
+    var ENVIRONMENT = 'mypurecloud.com';
+    var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
+    var template_hsm = leroyTemplates
+    var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
+} 
+else if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && pathName === '/Sirio-Libanes' ) 
+{
+    var CLIENT_ID = '55352089-f643-4a78-8980-c4ff0e2314a8';
+    var ENVIRONMENT = 'sae1.pure.cloud';
+    var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
+    var template_hsm = sirioTemplates
+    var x_api_key = "yjGa6BVbfv8kE2tohOmS89QYIzYjm4jq8A6R5c1Y"
+} 
+else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/LeroyMerlin' )
 {
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';
@@ -25,6 +42,7 @@ else if ( hostname === 'localhost' && pathName === '/' )
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'http://localhost:3000/'
     var template_hsm = leroyTemplates
+    var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
 }
 else if ( hostname === 'localhost' && pathName === '/LeroyMerlin' ) 
 {
@@ -60,9 +78,8 @@ if(window.location.hash)
         url: `https://api.${ENVIRONMENT}/api/v2/users/me`,
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', `bearer ${accessToken}`);},
-        success: function(data) {
-            console.log(data)
-            console.log(data.chat.jabberId)
+        success: function(data) 
+        {
             var orgName = getOrganzationName(data.chat.jabberId)
             
             userDatas[0] = data.email
@@ -96,4 +113,4 @@ var userID = userDatas[1]
 var agentName = userDatas[2]
 var orgName = userDatas[3]
 
-export { accessToken, userID, email, agentName, template_hsm, orgName, x_api_key}
+export { pathName, accessToken, userID, email, agentName, template_hsm, orgName, x_api_key}

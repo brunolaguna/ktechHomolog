@@ -8,13 +8,13 @@ export function getOrganzationName(cloudRegion)
     {
         if ( cloudRegion.includes(orgArray[i]) )
         {
-            cloudRegion = 'us_east_1'
+            cloudRegion = '.us_east_1'
             var proxy = 'api'
             regionArray.push(cloudRegion, proxy)
             return regionArray
         }
     }
-    cloudRegion = 'sa_east_1'
+    cloudRegion = '.sa_east_1'
     var proxy = 'apiSae1'
     regionArray.push(cloudRegion, proxy)
     return regionArray

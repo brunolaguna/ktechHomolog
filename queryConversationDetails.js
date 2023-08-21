@@ -8,7 +8,14 @@ async function queryConversationDetails(tel, accessToken, cloudRegion) {
         
       const platformClient = require("purecloud-platform-client-v2");
       const client = platformClient.ApiClient.instance;
-      client.setEnvironment(platformClient.PureCloudRegionHosts+cloudRegion);
+      if ( cloudRegion === '.sa_east_1' )
+      {
+        client.setEnvironment(platformClient.PureCloudRegionHosts.sa_east_1);
+      }
+      else
+      {
+        client.setEnvironment(platformClient.PureCloudRegionHosts.us_east_1);
+      }
       client.setAccessToken(accessToken);
       let apiInstance = new platformClient.ConversationsApi();
       

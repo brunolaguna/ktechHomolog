@@ -92,8 +92,8 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName)
               if ( c == 8 ) {
     
                 newCell.innerHTML = 'Interagindo'
-                newCell.style.backgroundColor = "lightskyblue"
-                newCell.style.color = "red"
+                newCell.style.backgroundColor = "gray"
+                newCell.style.color = "white"
     
               }
     
@@ -121,7 +121,7 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName)
               if ( status === 200 && c == 8 ) {
   
                 newCell.innerHTML = 'Enviado'
-                newCell.style.backgroundColor = "#BC3F86"
+                newCell.style.backgroundColor = "#629411"
                 newCell.style.color = "white"
   
               } else if ( c == 8 ){
