@@ -1,6 +1,6 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
-import('./Styles/orgStyles.js')
-import('./Styles/toggleButtonStyle.js')
+import('./styles/orgStyles.js')
+import('./styles/toggleButtonStyle.js')
 import { pathName, accessToken, template_hsm, orgName } from './Get Genesys APIs/getAccessToken.js';
 import { getOrgTemplates, msg } from './Functions/sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
