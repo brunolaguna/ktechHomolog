@@ -1,12 +1,12 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
-import('./styles/orgStyles.js')
-import('./toggleButtonStyle.js')
+import('./Styles/orgStyles.js')
+import('./Styles/toggleButtonStyle.js')
 import { pathName, accessToken, template_hsm, orgName } from './Get Genesys APIs/getAccessToken.js';
 import { getOrgTemplates, msg } from './Functions/sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
-import { swalFire } from './swal_fire.js';
+import { swalFire } from './Functions/swal_fire.js';
 import { sendHSM } from './Kloe Broker/fetchBroker.js';
-import { bulkHSM_mode } from './sendBulkHSM.js';
+import { bulkHSM_mode } from './Functions/sendBulkHSM.js';
 
 if ( accessToken )
 {
