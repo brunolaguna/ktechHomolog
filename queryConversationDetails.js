@@ -51,11 +51,9 @@ async function queryConversationDetails(tel, accessToken, cloudRegion) {
 
         })
 
-        .catch((err) => {
-
-          console.log(err)
-          resolve(false)
-          
+        .catch((err) => 
+        {
+          resolve(false)  
         });
     })
 }

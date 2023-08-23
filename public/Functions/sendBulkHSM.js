@@ -8,6 +8,7 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
 
   if ( file.length > 0 && document.querySelector('.toggle-input').checked ) 
   {
+    document.querySelector('.toggle-input').disabled = false
     check_file_extension(file)
     
     loaderON(button_sendHSM)
@@ -95,16 +96,19 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
 
               newCell = newRow.insertCell()
     
-              if ( c == 8 ) {
-    
-                var colorStatus = pathName === '/' ? colorStatus = '#3B2D5E'
-                : pathName === '/LeroyMerlin' ? colorStatus = 'black'
-                : colorStatus = '#2855af'
+              if ( c == 8 ) 
+              {
+                var colorStatus = pathName === '/' ? '#3B2D5E' :
+                pathName === '/LeroyMerlin' ? (
+                  newCell.style.borderColor = 'white',
+                  'black'
+                ) :
+                pathName === '/Sirio-Libanes' ? '#2855af' :
+                undefined; // Default value if none of the conditions match
 
                 newCell.innerHTML = 'Interagindo'
                 newCell.style.backgroundColor = colorStatus
                 newCell.style.color = "white"
-    
               }
     
               c++
@@ -128,21 +132,21 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
   
               newCell = newRow.insertCell()
   
-              if ( status === 200 && c == 8 ) {
-
-                var colorStatus = pathName === '/' ? colorStatus = '#E52E7D'
-                : pathName === '/LeroyMerlin' ? colorStatus = '#629411'
-                : colorStatus = '#54A7EC'
+              if ( status === 200 && c == 8 ) 
+              {
+                var colorStatus = pathName === '/' ? '#E52E7D'
+                : pathName === '/LeroyMerlin' ? '#629411'
+                : '#54A7EC'
   
                 newCell.innerHTML = 'Enviado'
                 newCell.style.backgroundColor = colorStatus
                 newCell.style.color = "white"
   
-              } else if ( c == 8 ){
-  
+              } 
+              else if ( c == 8 )
+              {
                 newCell.innerHTML = 'Erro'
                 newCell.style.backgroundColor = "red"
-  
               }
   
               c++
