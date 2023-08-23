@@ -1,5 +1,5 @@
-import { select_fila } from './Get Genesys APIs/getUsersQueues.js';
-import { previous_message, cell_phone, msg } from './index.js'
+import { select_fila } from '../Get Genesys APIs/getUsersQueues.js';
+import { previous_message, cell_phone, msg } from '../index.js'
 
 document.querySelector('.toggle-input').addEventListener('click', () => 
 {
@@ -31,25 +31,24 @@ document.querySelector('.toggle-input').addEventListener('click', () =>
     input_element = Array.from(input_element)
     input_element.pop()
   
-    if( document.querySelector('.toggle-input').checked ) {
+    if( document.querySelector('.toggle-input').checked ) 
+    {
   
-      //console.log(document.getElementById('mensagem').value)
-  
-      if ( document.getElementById('mensagem').value !== null ) {
-  
+      if ( document.getElementById('mensagem').value !== null ) 
+      {
         var template_variables = document.getElementsByClassName('excluir')
   
-        for ( let i = 0; i < template_variables.length; i++ ) {
+        for ( let i = 0; i < template_variables.length; i++ ) 
+        {
           template_variables[i].style.position = 'absolute'
           template_variables[i].style.zIndex = '-1'
         }
-  
       }
-  
-      //console.log(input_element)
+
       document.querySelector('.table-wrapper').style.marginTop = '60px'
       document.getElementById('client_name').style.position = 'absolute'
   
+      previous_message.style.transition = 'auto'
       previous_message.style.opacity = '0'
       previous_message.style.zIndex = '-1'
       previous_message.style.position = 'absolute'
@@ -70,6 +69,7 @@ document.querySelector('.toggle-input').addEventListener('click', () =>
       for ( let i = 0; i < label_elements.length; i++ ) {
         label_elements[i].style.opacity = '0'
         label_elements[i].disabled = true
+        label_elements[i].hidden = true
       }
   
       for ( let i = 0; i < input_element.length; i++ ) {
@@ -124,12 +124,14 @@ document.querySelector('.toggle-input').addEventListener('click', () =>
   
       file_example.style.opacity = '0'
       file_example.hidden = true
+      previous_message.style.transition = '.7s'
       previous_message.style.opacity = '1'
       previous_message.style.zIndex = '1'
   
       for ( let i = 0; i < label_elements.length; i++ ) {
         label_elements[i].style.opacity = '1'
         label_elements[i].disabled = false
+        label_elements[i].hidden = false
       }
   
       for ( let i = 0; i < input_element.length; i++ ) {

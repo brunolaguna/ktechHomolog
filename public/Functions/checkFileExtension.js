@@ -1,4 +1,4 @@
-import { swalFire } from "../swal_fire.js"
+import { swalFire } from "./swal_fire.js"
 
 export function check_file_extension(file)
 {

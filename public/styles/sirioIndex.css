@@ -32,6 +32,17 @@ label
     padding-left: 10px;
 }
 
+i
+{
+    color: #2F5197;
+}
+
+i:hover
+{
+    color: #54A7EC;
+    cursor: pointer;
+}
+
 input, textarea, select
 {
     padding: 8px;
@@ -245,8 +256,8 @@ h1 {
 
 #bulkHSM_label {
     position: absolute;
+    margin-top: 70px;
     margin-left: 10px;
-    padding-top: 10px;
     opacity: 0;
     z-index: -1;
     font-weight: bold;

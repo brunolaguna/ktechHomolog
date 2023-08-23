@@ -1,5 +1,5 @@
-import { accessToken, userID } from '../getAccessToken.js';
-import { regionArray } from '../setCloudRegion.js';
+import { accessToken, userID } from './getAccessToken.js';
+import { regionArray } from '../Functions/setCloudRegion.js';
 
 const headers = {
 

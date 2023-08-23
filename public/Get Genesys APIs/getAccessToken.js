@@ -1,13 +1,13 @@
-import { getOrganzationName } from "./setCloudRegion.js";
-import { leroyTemplates } from './Kloe Broker/Messages/leroyMessages.js'
-import { sirioTemplates } from './Kloe Broker/Messages/sirioMessages.js'
+import { getOrganzationName } from "../Functions/setCloudRegion.js";
+import { leroyTemplates } from '../Kloe Broker/Messages/leroyMessages.js'
+import { sirioTemplates } from '../Kloe Broker/Messages/sirioMessages.js'
 
 const hostname = window.location.hostname
 const pathName = window.location.pathname
 
 if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && pathName === '/' ) 
 {
-    var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
+    var CLIENT_ID = '4b89963b-f821-493b-a85e-49c616185415';
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
     var template_hsm = leroyTemplates
@@ -17,7 +17,7 @@ else if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && path
 {
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';
-    var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
+    var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/LeroyMerlin'
     var template_hsm = leroyTemplates
     var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
 } 
@@ -25,20 +25,37 @@ else if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && path
 {
     var CLIENT_ID = '55352089-f643-4a78-8980-c4ff0e2314a8';
     var ENVIRONMENT = 'sae1.pure.cloud';
-    var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
+    var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/Sirio-Libanes'
     var template_hsm = sirioTemplates
     var x_api_key = "yjGa6BVbfv8kE2tohOmS89QYIzYjm4jq8A6R5c1Y"
+} 
+else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/' )
+{
+    var CLIENT_ID = '4b89963b-f821-493b-a85e-49c616185415';
+    var ENVIRONMENT = 'mypurecloud.com';
+    var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/'
+    var template_hsm = leroyTemplates
+    var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
 } 
 else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/LeroyMerlin' )
 {
     var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
     var ENVIRONMENT = 'mypurecloud.com';
-    var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/'
+    var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/LeroyMerlin'
     var template_hsm = leroyTemplates
+    var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
+} 
+else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/Sirio-Libanes' )
+{
+    var CLIENT_ID = '55352089-f643-4a78-8980-c4ff0e2314a8';
+    var ENVIRONMENT = 'sae1.pure.cloud';
+    var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/Sirio-Libanes'
+    var template_hsm = leroyTemplates
+    var x_api_key = "yjGa6BVbfv8kE2tohOmS89QYIzYjm4jq8A6R5c1Y"
 } 
 else if ( hostname === 'localhost' && pathName === '/' ) 
 {
-    var CLIENT_ID = 'f2bc5acb-0ff2-47ad-9b53-cedd33025c30';
+    var CLIENT_ID = '4b89963b-f821-493b-a85e-49c616185415';
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'http://localhost:3000/'
     var template_hsm = leroyTemplates
@@ -86,7 +103,7 @@ if(window.location.hash)
             userDatas[1] = data.id
             userDatas[2] = data.name
             userDatas[3] = orgName
-            //userDatas[3] = data.chat.jabberId
+
             return userDatas
 
         }

@@ -1,8 +1,8 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
-import('./orgStyles.js')
+import('./styles/orgStyles.js')
 import('./toggleButtonStyle.js')
-import { pathName, accessToken, template_hsm, orgName } from './getAccessToken.js';
-import { getOrgTemplates, msg } from './sort_messages.js'
+import { pathName, accessToken, template_hsm, orgName } from './Get Genesys APIs/getAccessToken.js';
+import { getOrgTemplates, msg } from './Functions/sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
 import { swalFire } from './swal_fire.js';
 import { sendHSM } from './Kloe Broker/fetchBroker.js';
@@ -116,10 +116,10 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
   var button_sendHSM = document.querySelector('#sendHSM')
 
-  bulkHSM_mode(button_sendHSM, accessToken, orgName)
+  bulkHSM_mode(button_sendHSM, accessToken, orgName, pathName)
   
-  if ( document.querySelector('.toggle-input').checked == false ) {
-
+  if ( document.querySelector('.toggle-input').checked == false ) 
+  {
   button_sendHSM = document.querySelector('#sendHSM')
   button_sendHSM.disabled = true
   button_sendHSM.innerHTML = `<div class="loader"></div>`
@@ -167,9 +167,13 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
       const clientInteracting = await res.json()
 
-      if (clientInteracting.client == true){
-
-        swalFire('Cliente Interagindo!', 'O cliente já está em outro atendimento, aguarde a interação ser finalizada para o envio de HSM!', 'warning', 'gray', 'gray', 'OK')
+      if (clientInteracting.client == true)
+      {
+        var swalColor = pathName === '/' ? swalColor = '#3B2D5E'
+        : pathName === '/LeroyMerlin' ? swalColor = 'black'
+        : swalColor = '#2855af' 
+        
+        swalFire('Cliente Interagindo!', 'O cliente já está em outro atendimento, aguarde a interação ser finalizada para o envio de HSM!', 'warning', swalColor, swalColor, 'OK')
     
         button_sendHSM.disabled = false
         button_sendHSM.innerHTML = 'Enviar HSM'
@@ -194,18 +198,18 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
           if ( pathName === '/' )
           {
-            var success_swalColor = '#BC3F86'
+            var swalColor = '#E52E7D'
           }
           else if ( pathName === '/LeroyMerlin' )
           {
-            var success_swalColor = '#629411'
+            var swalColor = '#629411'
           }
           else if ( pathName === '/Sirio-Libanes' )
           {
-            var success_swalColor = '#54A7EC'
+            var swalColor = '#54A7EC'
           }
 
-          swalFire('Sucesso!', 'O HSM foi enviado com sucesso!', 'success', success_swalColor, success_swalColor, 'OK')
+          swalFire('Sucesso!', 'O HSM foi enviado com sucesso!', 'success', swalColor, swalColor, 'OK')
 
           this.reset()
 

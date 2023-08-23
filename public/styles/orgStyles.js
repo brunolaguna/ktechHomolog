@@ -12,5 +12,9 @@ else if ( window.location.pathname === '/Sirio-Libanes' )
   source_formImage.src = './Images/Logo Faculdade Sirio Libanes.png'
   link_css.href = './styles/sirioIndex.css'
 }
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+await sleep(1000)
 
 rowDiv.opacity = '1'

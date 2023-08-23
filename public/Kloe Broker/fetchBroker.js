@@ -1,4 +1,4 @@
-import { userID, email, agentName, x_api_key } from '../getAccessToken.js'
+import { userID, email, agentName, x_api_key } from '../Get Genesys APIs/getAccessToken.js'
 
 export function sendHSM(client_name, telefone, fila, elementname, inputParams, HSMmode) {
 

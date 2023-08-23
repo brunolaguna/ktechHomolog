@@ -1,8 +1,8 @@
-import { check_file_extension } from "./Functions/checkFileExtension.js"
-import { loaderON, loaderOFF } from "./Functions/loader.js"
-import { sendHSM } from "./Kloe Broker/fetchBroker.js"
+import { check_file_extension } from "./checkFileExtension.js"
+import { loaderON, loaderOFF } from "./loader.js"
+import { sendHSM } from "../Kloe Broker/fetchBroker.js"
 
-export async function bulkHSM_mode(button_sendHSM, accessToken, orgName)
+export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathName)
 {
   var file = document.getElementById('file_input').files
 
@@ -42,7 +42,13 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName)
       var newRow = tbodyEl.insertRow()
       dados[r] = rowData[r].split(';')
 
-        for( var c = 0; c < dados[r].length; c++ ) {
+        for( var c = 0; c < dados[r].length; c++ ) 
+        {
+          if ( dados[r][0] === '' )
+          {
+            loaderOFF(button_sendHSM)
+            return
+          }
 
           /*
           while ( dados[r][1].length !== 11 && dados[r][1].length !== 10 || isNaN(dados[r][1]) === true ) {
@@ -91,8 +97,12 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName)
     
               if ( c == 8 ) {
     
+                var colorStatus = pathName === '/' ? colorStatus = '#3B2D5E'
+                : pathName === '/LeroyMerlin' ? colorStatus = 'black'
+                : colorStatus = '#2855af'
+
                 newCell.innerHTML = 'Interagindo'
-                newCell.style.backgroundColor = "gray"
+                newCell.style.backgroundColor = colorStatus
                 newCell.style.color = "white"
     
               }
@@ -119,9 +129,13 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName)
               newCell = newRow.insertCell()
   
               if ( status === 200 && c == 8 ) {
+
+                var colorStatus = pathName === '/' ? colorStatus = '#E52E7D'
+                : pathName === '/LeroyMerlin' ? colorStatus = '#629411'
+                : colorStatus = '#54A7EC'
   
                 newCell.innerHTML = 'Enviado'
-                newCell.style.backgroundColor = "#629411"
+                newCell.style.backgroundColor = colorStatus
                 newCell.style.color = "white"
   
               } else if ( c == 8 ){

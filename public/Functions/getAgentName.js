@@ -1,4 +1,4 @@
-import { agentName } from "../getAccessToken.js";
+import { agentName } from "../Get Genesys APIs/getAccessToken.js";
 
 export async function automaticAgentName()
 {
