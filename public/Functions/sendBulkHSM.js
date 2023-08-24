@@ -146,6 +146,7 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
               else if ( c == 8 )
               {
                 newCell.innerHTML = 'Erro'
+                newCell.title = 'Mensagem desconhecida, por favor adicione uma mensagem registrada.'
                 newCell.style.backgroundColor = "red"
               }
   

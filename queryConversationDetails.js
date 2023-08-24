@@ -36,7 +36,7 @@ async function queryConversationDetails(tel, accessToken, cloudRegion) {
             conversationEnd[i] = obj[i].conversationEnd
             if ( obj[i].conversationEnd === undefined ) {
 
-              //console.log(true)
+              console.log(true)
               resolve(true)
               return
               
@@ -46,7 +46,7 @@ async function queryConversationDetails(tel, accessToken, cloudRegion) {
             
           }
 
-          //console.log(conversationEnd)
+          console.log(conversationEnd)
           resolve(false)
 
         })

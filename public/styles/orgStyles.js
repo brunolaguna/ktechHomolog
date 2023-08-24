@@ -11,6 +11,7 @@ else if ( window.location.pathname === '/Sirio-Libanes' )
 {
   source_formImage.src = './Images/Logo Faculdade Sirio Libanes.png'
   link_css.href = './styles/sirioIndex.css'
+  document.querySelector('a').href = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/Files/exemploSirio.csv'
 }
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

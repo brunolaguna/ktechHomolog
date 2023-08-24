@@ -8,7 +8,7 @@ export function sendHSM(client_name, telefone, fila, elementname, inputParams, H
 
   for (let i = 0; i < params.length; i++)
   {
-    if ( params[i].default === undefined )
+    if ( params[i].default === undefined || params[i].default === '' )
     {
       undefinedInputs+=1
     }
