@@ -34,7 +34,6 @@ export function sendHSM(client_name, telefone, fila, elementname, inputParams, H
           "name": `${client_name}`,
           "email": `${email}`,
           "cpf": "",
-          "nome": `${client_name}`,
           "customField1": "",
           "midia": "whatsapp",
         },

@@ -15,6 +15,6 @@ else if ( window.location.pathname === '/Sirio-Libanes' )
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-await sleep(1000)
+await sleep(1500)
 
 rowDiv.opacity = '1'
