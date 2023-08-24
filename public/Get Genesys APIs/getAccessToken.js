@@ -50,7 +50,7 @@ else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/S
     var CLIENT_ID = '55352089-f643-4a78-8980-c4ff0e2314a8';
     var ENVIRONMENT = 'sae1.pure.cloud';
     var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/Sirio-Libanes'
-    var template_hsm = leroyTemplates
+    var template_hsm = sirioTemplates
     var x_api_key = "yjGa6BVbfv8kE2tohOmS89QYIzYjm4jq8A6R5c1Y"
 } 
 else if ( hostname === 'localhost' && pathName === '/' ) 

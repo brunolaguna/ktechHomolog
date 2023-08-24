@@ -187,7 +187,7 @@ button{
 }
 
 button:hover{
-    background-color: #2F5197;
+    background-color: #3f7db1;
 }
 
 button:active{
@@ -289,6 +289,7 @@ h1 {
 
 .table-wrapper {
     position: absolute;
+    bottom: 1px;
     margin-left: -1px;
     margin-top: 0px;
     height: 0px;

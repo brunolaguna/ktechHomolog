@@ -78,9 +78,9 @@ var leroyTemplates = [
     "namespace": "c5dee8f4-29e6-4af2-9f6a-7e9e8bfd2ab5"
   },
   {
-    "elementname": "protocolo",
+    "elementname": "protocolo_",
     "body": `Olá ${client}, tudo bem? \nMeu nome é ${agent} e gostaria de falar sobre o protocolo ${protocolNumber}. \nAguardamos o seu retorno, estamos à disposição para melhor atendê-la (o).`,
-    "namespace": "da7f95d6-1185-491f-b7f1-068c0cf95907"
+    "namespace": "822a1fdd-3aa6-4d0d-900f-2781c0dc5e4d"
   },
   {
     "elementname": "cadastro_pendente",

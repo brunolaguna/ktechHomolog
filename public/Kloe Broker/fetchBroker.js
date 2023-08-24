@@ -2,6 +2,19 @@ import { userID, email, agentName, x_api_key } from '../Get Genesys APIs/getAcce
 
 export function sendHSM(client_name, telefone, fila, elementname, inputParams, HSMmode) {
 
+  const params = [{"default": inputParams[0]}, {"default": inputParams[1]}, {"default": inputParams[2]}, {"default": inputParams[3]}]
+
+  var undefinedInputs = 0
+
+  for (let i = 0; i < params.length; i++)
+  {
+    if ( params[i].default === undefined )
+    {
+      undefinedInputs+=1
+    }
+  }
+  params.length -= undefinedInputs
+
   return new Promise((resolve, reject) => {
 
     const headers = {
@@ -13,20 +26,7 @@ export function sendHSM(client_name, telefone, fila, elementname, inputParams, H
       "conversationId": `55${telefone}`,
       "hsm": {
         "element_name": `${elementname}`,
-        "localizable_params": [
-          {
-            "default": `${inputParams[0]}`
-          },
-          {
-            "default": `${inputParams[1]}`
-          },
-          {
-            "default": `${inputParams[2]}`
-          },
-          {
-            "default": `${inputParams[3]}`
-          }
-        ]
+        "localizable_params": params
       },
       "isBot": false,
       "context": {

@@ -224,7 +224,11 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
         }
           else {
           console.error(res)
-        }
+          }
+          //adjustTextareaHeight
+          previous_message.style.height = 'auto'; // Reset the height to auto to recalculate
+          previous_message.style.height = previous_message.scrollHeight + 'px'; // Set the height based on the content
+          //--------------------
       }})
 
       .catch((error)=>{

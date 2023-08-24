@@ -290,6 +290,7 @@ h1 {
 
 .table-wrapper {
     position: absolute;
+    bottom: 1px;
     margin-left: -1px;
     margin-top: 0px;
     height: 0px;
