@@ -1,3 +1,5 @@
+import { deleteFirstLoad } from "../index.js"
+
 const source_formImage = document.getElementById('formImage')
 const link_css = document.querySelector('link')
 const rowDiv = document.getElementById('row').style
@@ -16,6 +18,8 @@ else if ( window.location.pathname === '/Sirio-Libanes' )
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-await sleep(1500)
+//await sleep(1900)
+
+await deleteFirstLoad()
 
 rowDiv.opacity = '1'

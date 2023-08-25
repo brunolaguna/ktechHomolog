@@ -68,6 +68,11 @@ input:hover::placeholder, select:hover::placeholder, textarea:hover::placeholder
     transition: 0.1s;
 }
 
+textarea
+{
+    bottom: 1px;
+}
+
 input::placeholder{
     transition: 0.7s;
 }

@@ -26,7 +26,6 @@ async function queryConversationDetails(tel, accessToken, cloudRegion) {
         .then((data) => {
 
           const obj = data.conversations
-          //console.log(obj)
 
           let i = 0
           let conversationEnd = []
@@ -34,19 +33,17 @@ async function queryConversationDetails(tel, accessToken, cloudRegion) {
           while ( i < obj.length ) {
 
             conversationEnd[i] = obj[i].conversationEnd
-            if ( obj[i].conversationEnd === undefined ) {
-
-              console.log(true)
+            if ( obj[i].conversationEnd === undefined ) 
+            {
               resolve(true)
-              return
-              
-            } else { /*console.log(false)*/ }
+              return 
+            } 
+            else { /*console.log(false)*/ }
 
             i++
             
           }
 
-          console.log(conversationEnd)
           resolve(false)
 
         })

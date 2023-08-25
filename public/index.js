@@ -1,17 +1,20 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
 import('./styles/orgStyles.js')
 import('./styles/toggleButtonStyle.js')
-import { pathName, accessToken, template_hsm, orgName } from './Get Genesys APIs/getAccessToken.js';
+import { pathName, accessToken, template_hsm, cloudRegion } from './Get Genesys APIs/getAccessToken.js';
 import { getOrgTemplates, msg } from './Functions/sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
 import { swalFire } from './Functions/swal_fire.js';
 import { sendHSM } from './Kloe Broker/fetchBroker.js';
 import { bulkHSM_mode } from './Functions/sendBulkHSM.js';
 
-if ( accessToken )
+export async function deleteFirstLoad()
 {
+  if ( accessToken )
+  {
   document.querySelector('section').remove()
   document.querySelector('body').style.overflowY = 'visible'
+  }
 }
 
 getOrgTemplates(template_hsm)
@@ -116,7 +119,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
   var button_sendHSM = document.querySelector('#sendHSM')
 
-  bulkHSM_mode(button_sendHSM, accessToken, orgName, pathName)
+  bulkHSM_mode(button_sendHSM, accessToken, cloudRegion, pathName)
   
   if ( document.querySelector('.toggle-input').checked == false ) 
   {
@@ -151,7 +154,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
         Mensagem: elementname,
         Parametros: inputParams,
         AccessToken: accessToken,
-        Cloud_region: orgName[0]
+        Cloud_region: cloudRegion
       }
 
       fetch('/verifyClient', {

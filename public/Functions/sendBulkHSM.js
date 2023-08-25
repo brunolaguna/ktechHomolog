@@ -2,7 +2,7 @@ import { check_file_extension } from "./checkFileExtension.js"
 import { loaderON, loaderOFF } from "./loader.js"
 import { sendHSM } from "../Kloe Broker/fetchBroker.js"
 
-export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathName)
+export async function bulkHSM_mode(button_sendHSM, accessToken, cloudRegion, pathName)
 {
   var file = document.getElementById('file_input').files
 
@@ -73,7 +73,7 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
         var data_hsm = {
           Telefone: dados[r][1],
           AccessToken: accessToken,
-          Cloud_region: orgName
+          Cloud_region: cloudRegion
         }
 
         await fetch('/verifyClient', {

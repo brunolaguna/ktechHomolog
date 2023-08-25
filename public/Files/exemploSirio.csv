@@ -1,4 +1,4 @@
-﻿Nome do Cliente;Número do Cliente;Fila;Mensagem;Var1;;
-João;11976687112;CALM - WhatsApp;ficha_abandonada;Joao;;
-José Faria;11971607515;CALM - WhatsApp;inscrito_incompleto;Jose;;
-Bruno Alencar;11957112491;CALM - WhatsApp;inscrito_nao_pago;Bruno;;
+﻿Nome do Cliente;Número do Cliente;Fila;Mensagem;Var1;Var2;Var3;Var4
+João;11976687112;KTECH_HOMOLOG;ficha_abandonada;Joao;;;
+José Faria;11971607515;KTECH_HOMOLOG;inscrito_incompleto;Jose;;;
+Bruno Alencar;11957112491;KTECH_HOMOLOG;inscrito_nao_pago;Bruno;;;

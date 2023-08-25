@@ -39,8 +39,7 @@ app.get("/Ktech", (req, res) =>
 app.post('/verifyClient', async (req, res) =>
 {
     //const setGenesysRegion = await ge
-    console.log(req.body.Cloud_region)
-    const clientInteracting = await queryConversationDetails(req.body.Telefone, req.body.AccessToken, req.body.Cloud_region[0])
+    const clientInteracting = await queryConversationDetails(req.body.Telefone, req.body.AccessToken, req.body.Cloud_region)
 
     res.status(200).json({ client: clientInteracting })
 })
