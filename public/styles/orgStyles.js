@@ -4,6 +4,10 @@ const source_formImage = document.getElementById('formImage')
 const link_css = document.querySelector('link')
 const rowDiv = document.getElementById('row').style
 
+if ( window.location.pathname === '/' )
+{
+  source_formImage.src = 'https://ktech.digital/wp-content/uploads/2021/12/Logo-lado.png'
+}
 if ( window.location.pathname === '/LeroyMerlin' )
 {
   source_formImage.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Leroy_Merlin.svg'
