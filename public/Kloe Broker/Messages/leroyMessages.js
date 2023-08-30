@@ -216,6 +216,11 @@ var leroyTemplates = [
     "elementname": "pontos_expiram",
     "body": `Olá ${client}! \nSeus ${amount} pontos Leroy Merlin Com Você expiram neste mês. Vá até uma de nossas lojas ou acesse nosso site / app e troque por DESCONTO agora mesmo!`,
     "namespace": "ca61f0d9-f3c9-4dba-8a24-fb39051cc48d"
+  },
+  {
+    "elementname": "cadastro_instala1",
+    "body": `Olá ${client}! \nAqui é da Leroy Merlin, tudo bem? \nVerificamos que você possui um cadastro pendente para se tornar um parceiro INSTALA. Caso ainda tenha interesse em continuar o cadastro, acesse o Portal do Prestador e dê sequência na documentação pendente. ${link}`,
+    "namespace": "9fe280e2-f39f-40cd-a4eb-8c1609a72dd5"
   }
 ]
 
