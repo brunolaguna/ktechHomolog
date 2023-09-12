@@ -137,7 +137,7 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
       //Log the form input values
 
-      let inputParams = ['Cliente', 'Agente', 'Pedido', 'Protocolo', 'Tentativas', 'Data', 'Link', 'Loja', 'Endereço', 'Solicitação', 'Servico_instalacao', 'Quantidade']
+      let inputParams = ['Cliente', 'Agente', 'Pedido', 'Protocolo', 'Tentativas', 'Data', 'Link', 'Loja', 'Endereço', 'Solicitação', 'Servico_instalacao', 'Quantidade', 'Nome do evento']
 
       for(let i=0; i<inputParams.length; i++){
         try {
