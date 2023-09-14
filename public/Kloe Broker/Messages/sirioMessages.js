@@ -29,6 +29,18 @@ var sirioTemplates = [
   {
     "elementname": "amanha_portas_abertas",
     "body": `É amanhã! 🙂\nEstamos com tudo pronto para te receber no Portas Abertas Faculdade Sírio-Libanês, a partir das 9h, no Sírio-Libanês Ensino e Pesquisa (Rua Prof. Daher Cutait, 69 – Bela Vista, São Paulo).\nConfira essas dicas para garantir uma experiência incrível:\n➡ Não se esqueça, aos domingos a Av. Paulista é interditada, portanto dê preferência ao transporte público: estamos localizados à poucos metros da estação de metrô Trianon-Masp\n➡ Caso prefira vir de carro, teremos vallet no local\n➡ Não esqueça de levar um documento original com foto (RG) para seu credenciamento\n➡ Você poderá levar apenas um acompanhante\n➡ E o mais importante: não tome café da manhã, as comidinhas são por nossa conta!\nEsperamos você. Até lá! `,
+  },
+  {
+    "elementname": "acao_100_off",
+    "body": `PORTAS ABERTAS | FACULDADE SÍRIO-LIBANÊS\nTemos o prazer de anunciar a participação de uma convidada especial no nosso evento: Thelma Assis. A renomada médica, apresentadora e influenciadora fará parte da nossa programação, com uma palestra pra lá de inspiradora!\nNosso encontro está marcado para: 17/09 (domingo), das 9h às 13h. \nSerá uma manhã repleta de atividades para conhecer tudo o que a Faculdade Sírio-Libanês tem para oferecer. \nE mais: teremos condições exclusivas de inscrição para os participantes do evento! \nConvide seus amigos e cadastre-se gratuitamente pelo link: https://faculdadesiriolibanes.org.br/eventos/portas-abertas\nVocê não pode perder. Até lá! 💙`,
+  },
+  {
+    "elementname": "convidado_especial",
+    "body": `PORTAS ABERTAS | FACULDADE SÍRIO-LIBANÊS\nTemos o prazer de anunciar a participação de uma convidada especial no nosso evento: Thelma Assis. A renomada médica, apresentadora e influenciadora fará parte da nossa programação, com uma palestra pra lá de inspiradora!\nNosso encontro está marcado para: 17/09 (domingo), das 9h às 13h. \nSerá uma manhã repleta de atividades para conhecer tudo o que a Faculdade Sírio-Libanês tem para oferecer. \nConvide seus amigos e cadastre-se gratuitamente pelo link: https://faculdadesiriolibanes.org.br/eventos/portas-abertas\nVocê não pode perder. Até lá! 💙`,
+  },
+  {
+    "elementname": "e_hoje",
+    "body": `Chegou o grande dia!\nA Faculdade Sírio-Libanês está de Portas Abertas para te receber hoje, a partir das 9h, na Rua Prof. Daher Cutait, 69 – Bela Vista, São Paulo/SP.\nChegue cedo para participar do café da manhã e aproveitar toda nossa programação.\nNos vemos já!  `,
   }
 ]
 
