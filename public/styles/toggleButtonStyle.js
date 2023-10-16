@@ -52,6 +52,7 @@ document.querySelector('.toggle-input').addEventListener('click', () =>
       previous_message.style.opacity = '0'
       previous_message.style.zIndex = '-1'
       previous_message.style.position = 'absolute'
+      previous_message.style.height = '0px'
   
       cell_phone.style.position = 'absolute'
       msg.style.position = 'absolute'
@@ -127,6 +128,8 @@ document.querySelector('.toggle-input').addEventListener('click', () =>
       previous_message.style.transition = '.7s'
       previous_message.style.opacity = '1'
       previous_message.style.zIndex = '1'
+      previous_message.style.height = 'auto'
+      previous_message.style.height = previous_message.scrollHeight + 'px';
   
       for ( let i = 0; i < label_elements.length; i++ ) {
         label_elements[i].style.opacity = '1'

@@ -2,12 +2,13 @@ import { check_file_extension } from "./checkFileExtension.js"
 import { loaderON, loaderOFF } from "./loader.js"
 import { sendHSM } from "../Kloe Broker/fetchBroker.js"
 
-export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathName)
+export async function bulkHSM_mode(button_sendHSM, accessToken, cloudRegion, pathName)
 {
   var file = document.getElementById('file_input').files
 
   if ( file.length > 0 && document.querySelector('.toggle-input').checked ) 
   {
+    document.querySelector('.toggle-input').disabled = false
     check_file_extension(file)
     
     loaderON(button_sendHSM)
@@ -72,7 +73,7 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
         var data_hsm = {
           Telefone: dados[r][1],
           AccessToken: accessToken,
-          Cloud_region: orgName
+          Cloud_region: cloudRegion
         }
 
         await fetch('/verifyClient', {
@@ -91,20 +92,23 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
     
           if (clientInteracting.client == true) {
 
-            while ( c < 9 ) {
+            while ( c < 11 ) {
 
               newCell = newRow.insertCell()
     
-              if ( c == 8 ) {
-    
-                var colorStatus = pathName === '/' ? colorStatus = '#3B2D5E'
-                : pathName === '/LeroyMerlin' ? colorStatus = 'black'
-                : colorStatus = '#2855af'
+              if ( c == 10 ) 
+              {
+                var colorStatus = pathName === '/' ? '#3B2D5E' :
+                pathName === '/LeroyMerlin' ? (
+                  newCell.style.borderColor = 'white',
+                  'black'
+                ) :
+                pathName === '/Sirio-Libanes' ? '#2855af' :
+                undefined; // Default value if none of the conditions match
 
                 newCell.innerHTML = 'Interagindo'
                 newCell.style.backgroundColor = colorStatus
                 newCell.style.color = "white"
-    
               }
     
               c++
@@ -124,25 +128,26 @@ export async function bulkHSM_mode(button_sendHSM, accessToken, orgName, pathNam
             const HSMmode = 'massaHSM'
             const status = await sendHSM(dados[r][0], dados[r][1], dados[r][2], dados[r][3], localizable_params_bulkHSM, HSMmode)
   
-            while ( c < 9 ) {
+            while ( c < 11 ) {
   
               newCell = newRow.insertCell()
   
-              if ( status === 200 && c == 8 ) {
-
-                var colorStatus = pathName === '/' ? colorStatus = '#E52E7D'
-                : pathName === '/LeroyMerlin' ? colorStatus = '#629411'
-                : colorStatus = '#54A7EC'
+              if ( status === 200 && c == 10 ) 
+              {
+                var colorStatus = pathName === '/' ? '#E52E7D'
+                : pathName === '/LeroyMerlin' ? '#629411'
+                : '#54A7EC'
   
                 newCell.innerHTML = 'Enviado'
                 newCell.style.backgroundColor = colorStatus
                 newCell.style.color = "white"
   
-              } else if ( c == 8 ){
-  
+              } 
+              else if ( c == 10 )
+              {
                 newCell.innerHTML = 'Erro'
+                newCell.title = 'Mensagem desconhecida, por favor adicione uma mensagem registrada.'
                 newCell.style.backgroundColor = "red"
-  
               }
   
               c++

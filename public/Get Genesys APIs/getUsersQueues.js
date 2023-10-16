@@ -1,9 +1,8 @@
-import { accessToken, userID } from './getAccessToken.js';
-import { regionArray } from '../Functions/setCloudRegion.js';
+import { accessToken, userID, api } from './getAccessToken.js';
 
 var select_fila
 
-axios.get(`${regionArray[1]}/api/v2/users/${userID}/queues`, { headers: { Authorization: `Bearer ${accessToken}` } })
+axios.get(`${api}/api/v2/users/${userID}/queues`, { headers: { Authorization: `Bearer ${accessToken}` } })
   
     .then(response =>{
   

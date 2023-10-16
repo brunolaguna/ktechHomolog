@@ -1,4 +1,5 @@
 import { getOrganzationName } from "../Functions/setCloudRegion.js";
+import { ktechTemplates } from "../Kloe Broker/Messages/ktechMessages.js";
 import { leroyTemplates } from '../Kloe Broker/Messages/leroyMessages.js'
 import { sirioTemplates } from '../Kloe Broker/Messages/sirioMessages.js'
 
@@ -10,7 +11,7 @@ if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && pathName 
     var CLIENT_ID = '4b89963b-f821-493b-a85e-49c616185415';
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'https://ktechdigital-homolog-34fe4008c979.herokuapp.com/'
-    var template_hsm = leroyTemplates
+    var template_hsm = ktechTemplates
     var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
 } 
 else if ( hostname === 'ktechdigital-homolog-34fe4008c979.herokuapp.com' && pathName === '/LeroyMerlin' ) 
@@ -34,7 +35,7 @@ else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/'
     var CLIENT_ID = '4b89963b-f821-493b-a85e-49c616185415';
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/'
-    var template_hsm = leroyTemplates
+    var template_hsm = ktechTemplates
     var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
 } 
 else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/LeroyMerlin' )
@@ -50,7 +51,7 @@ else if ( hostname === 'prod-hsm-50ce2b2a6f45.herokuapp.com' && pathName === '/S
     var CLIENT_ID = '55352089-f643-4a78-8980-c4ff0e2314a8';
     var ENVIRONMENT = 'sae1.pure.cloud';
     var redirect_uri = 'https://prod-hsm-50ce2b2a6f45.herokuapp.com/Sirio-Libanes'
-    var template_hsm = leroyTemplates
+    var template_hsm = sirioTemplates
     var x_api_key = "yjGa6BVbfv8kE2tohOmS89QYIzYjm4jq8A6R5c1Y"
 } 
 else if ( hostname === 'localhost' && pathName === '/' ) 
@@ -58,7 +59,7 @@ else if ( hostname === 'localhost' && pathName === '/' )
     var CLIENT_ID = '4b89963b-f821-493b-a85e-49c616185415';
     var ENVIRONMENT = 'mypurecloud.com';
     var redirect_uri = 'http://localhost:3000/'
-    var template_hsm = leroyTemplates
+    var template_hsm = ktechTemplates
     var x_api_key = "3KJwb3vLBM2g1d6vu5xlH58VhDgKrNY93ruVZzWv"
 }
 else if ( hostname === 'localhost' && pathName === '/LeroyMerlin' ) 
@@ -97,14 +98,12 @@ if(window.location.hash)
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', `bearer ${accessToken}`);},
         success: function(data) 
         {
-            var orgName = getOrganzationName(data.chat.jabberId)
+            var regionArray = getOrganzationName(data.chat.jabberId)
             
             userDatas[0] = data.email
             userDatas[1] = data.id
             userDatas[2] = data.name
-            userDatas[3] = orgName
-
-            return userDatas
+            userDatas[3] = regionArray
 
         }
     });
@@ -128,6 +127,7 @@ if(window.location.hash)
 var email = userDatas[0]
 var userID = userDatas[1]
 var agentName = userDatas[2]
-var orgName = userDatas[3]
+var cloudRegion = userDatas[3][0]
+var api = userDatas[3][1]
 
-export { pathName, accessToken, userID, email, agentName, template_hsm, orgName, x_api_key}
+export { pathName, accessToken, userID, email, agentName, template_hsm, cloudRegion, api, x_api_key}

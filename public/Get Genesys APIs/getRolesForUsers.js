@@ -1,5 +1,4 @@
-import { accessToken, userID } from './getAccessToken.js';
-import { regionArray } from '../Functions/setCloudRegion.js';
+import { accessToken, userID, api } from './getAccessToken.js';
 
 const headers = {
 
@@ -8,7 +7,7 @@ const headers = {
 
 }
 
-axios.get(`${regionArray[1]}/api/v2/users/${userID}/roles`, {headers})
+axios.get(`${api}/api/v2/users/${userID}/roles`, {headers})
 
     .then(data => {
 

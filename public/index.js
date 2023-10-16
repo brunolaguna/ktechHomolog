@@ -1,17 +1,20 @@
 import('./Get Genesys APIs/getRolesForUsers.js')
 import('./styles/orgStyles.js')
-import('./toggleButtonStyle.js')
-import { pathName, accessToken, template_hsm, orgName } from './Get Genesys APIs/getAccessToken.js';
+import('./styles/toggleButtonStyle.js')
+import { pathName, accessToken, template_hsm, cloudRegion } from './Get Genesys APIs/getAccessToken.js';
 import { getOrgTemplates, msg } from './Functions/sort_messages.js'
 import { automaticAgentName } from './Functions/getAgentName.js';
-import { swalFire } from './swal_fire.js';
+import { swalFire } from './Functions/swal_fire.js';
 import { sendHSM } from './Kloe Broker/fetchBroker.js';
-import { bulkHSM_mode } from './sendBulkHSM.js';
+import { bulkHSM_mode } from './Functions/sendBulkHSM.js';
 
-if ( accessToken )
+export async function deleteFirstLoad()
 {
+  if ( accessToken )
+  {
   document.querySelector('section').remove()
   document.querySelector('body').style.overflowY = 'visible'
+  }
 }
 
 getOrgTemplates(template_hsm)
@@ -100,9 +103,7 @@ msg.addEventListener("change", () => {
 
     }
   }
-
   clientName_input_mirror()
-
 })
 
 document.getElementById('client_name').addEventListener('input', () => 
@@ -116,116 +117,120 @@ document.getElementById('hsm_form').addEventListener('submit', async function (e
 
   var button_sendHSM = document.querySelector('#sendHSM')
 
-  bulkHSM_mode(button_sendHSM, accessToken, orgName, pathName)
+  bulkHSM_mode(button_sendHSM, accessToken, cloudRegion, pathName)
   
   if ( document.querySelector('.toggle-input').checked == false ) 
   {
-  button_sendHSM = document.querySelector('#sendHSM')
-  button_sendHSM.disabled = true
-  button_sendHSM.innerHTML = `<div class="loader"></div>`
-  
-  // Get form input values using the form elements collection
-  const form = event.target; // Get the form element
+    button_sendHSM = document.querySelector('#sendHSM')
+    button_sendHSM.disabled = true
+    button_sendHSM.innerHTML = `<div class="loader"></div>`
+    document.querySelector('.toggle-input').disabled = true
+    
+    // Get form input values using the form elements collection
+    const form = event.target; // Get the form element
 
-  var telefone = form.elements.telefone.value;
-  var fila = form.elements.fila.value;
-  var elementname = form.elements.mensagem.value;
+    var telefone = form.elements.telefone.value;
+    var fila = form.elements.fila.value;
+    var elementname = form.elements.mensagem.value;
 
-    //Log the form input values
+      //Log the form input values
 
-    let inputParams = ['Cliente', 'Agente', 'Pedido', 'Protocolo', 'Tentativas', 'Data', 'Link', 'Loja', 'Endereço', 'Solicitação', 'Servico_instalacao', 'Quantidade']
+      const inputParams = []
 
-    for(let i=0; i<inputParams.length; i++){
-      try {
-        inputParams[i] = document.getElementById(inputParams[i]).value
-      } catch {
-        inputParams.splice(i, 1)
-        i--
-      }
-    }
-
-    var data_hsm = {
-      Telefone: telefone,
-      Fila: fila,
-      Mensagem: elementname,
-      Parametros: inputParams,
-      AccessToken: accessToken,
-      Cloud_region: orgName[0]
-    }
-
-    fetch('/verifyClient', {
-
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data_hsm)
-
-    })
-
-    .then(async(res)=>{
-
-      const clientInteracting = await res.json()
-
-      if (clientInteracting.client == true)
+      for( let i = 0; i < create_input_div.childNodes.length; i++ )
       {
-        var swalColor = pathName === '/' ? swalColor = '#3B2D5E'
-        : pathName === '/LeroyMerlin' ? swalColor = 'black'
-        : swalColor = '#2855af' 
+        inputParams[i] = create_input_div.childNodes.item(i).value
+      }
+
+      var data_hsm = {
+        Telefone: telefone,
+        Fila: fila,
+        Mensagem: elementname,
+        Parametros: inputParams,
+        AccessToken: accessToken,
+        Cloud_region: cloudRegion
+      }
+
+      fetch('/verifyClient', {
+
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data_hsm)
+
+      })
+
+      .then(async(res)=>{
+
+        const clientInteracting = await res.json()
+
+        if (clientInteracting.client == true)
+        {
+          var swalColor = pathName === '/' ? swalColor = '#3B2D5E'
+          : pathName === '/LeroyMerlin' ? swalColor = 'black'
+          : swalColor = '#2855af' 
+
+          swalFire('Cliente Interagindo!', 'O cliente já está em outro atendimento, aguarde a interação ser finalizada para o envio de HSM!', 'warning', swalColor, swalColor, 'OK')
         
-        swalFire('Cliente Interagindo!', 'O cliente já está em outro atendimento, aguarde a interação ser finalizada para o envio de HSM!', 'warning', swalColor, swalColor, 'OK')
-    
-        button_sendHSM.disabled = false
-        button_sendHSM.innerHTML = 'Enviar HSM'
-    
-      } else {
-
-      if (res.ok) {
-
-        const HSMmode = 'individualHSM'
-        const client_name = document.getElementById('client_name').value
-
-        let shippingStatus = await sendHSM(client_name, telefone, fila, elementname, inputParams, HSMmode)
-        
-        if ( shippingStatus != 200 ) {
-          
-          swalFire('Erro', 'Erro ao enviar o HSM!\n', 'error', '#b82c2c', 'OK')
-
           button_sendHSM.disabled = false
           button_sendHSM.innerHTML = 'Enviar HSM'
-
+          document.querySelector('.toggle-input').disabled = false
+        
         } else {
 
-          if ( pathName === '/' )
-          {
-            var swalColor = '#E52E7D'
+        if (res.ok) {
+
+          const HSMmode = 'individualHSM'
+          const client_name = document.getElementById('client_name').value
+
+          let shippingStatus = await sendHSM(client_name, telefone, fila, elementname, inputParams, HSMmode)
+
+          if ( shippingStatus != 200 ) {
+
+            swalFire('Erro', 'Erro ao enviar o HSM!\n'+shippingStatus, 'error', '#b82c2c', '#b82c2c', 'OK')
+
+            button_sendHSM.disabled = false
+            button_sendHSM.innerHTML = 'Enviar HSM'
+            document.querySelector('.toggle-input').disabled = false
+
+          } else {
+
+            if ( pathName === '/' )
+            {
+              var swalColor = '#E52E7D'
+            }
+            else if ( pathName === '/LeroyMerlin' )
+            {
+              var swalColor = '#629411'
+            }
+            else if ( pathName === '/Sirio-Libanes' )
+            {
+              var swalColor = '#54A7EC'
+            }
+
+            swalFire('Sucesso!', 'O HSM foi enviado com sucesso!', 'success', swalColor, swalColor, 'OK')
+
+            this.reset()
+
+            button_sendHSM.disabled = false
+            button_sendHSM.innerHTML = 'Enviar HSM'
+            document.querySelector('.toggle-input').disabled = false
+
+            }
+        }
+          else {
+          console.error(res)
           }
-          else if ( pathName === '/LeroyMerlin' )
-          {
-            var swalColor = '#629411'
-          }
-          else if ( pathName === '/Sirio-Libanes' )
-          {
-            var swalColor = '#54A7EC'
-          }
+          //adjustTextareaHeight
+          previous_message.style.height = 'auto'; // Reset the height to auto to recalculate
+          previous_message.style.height = previous_message.scrollHeight + 'px'; // Set the height based on the content
+          //--------------------
+      }})
 
-          swalFire('Sucesso!', 'O HSM foi enviado com sucesso!', 'success', swalColor, swalColor, 'OK')
-
-          this.reset()
-
-          button_sendHSM.disabled = false
-          button_sendHSM.innerHTML = 'Enviar HSM'
-
-          }
-      }
-        else {
-        console.error(res)
-      }
-    }})
-
-    .catch((error)=>{
-      console.error('Error:', error)
-    })
+      .catch((error)=>{
+        console.error('Error:', error)
+      })
 
   }
 

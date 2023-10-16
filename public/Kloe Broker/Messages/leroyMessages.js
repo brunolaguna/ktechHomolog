@@ -1,15 +1,19 @@
-const client = '{Cliente}'
+const address = '{Endereço}'
+const amount = '{Quantidade}'
 const agent = `{Agente}`
+const client = '{Cliente}'
+const date = '{Data}'
+const hour = '{Hora(s)}'
+const link = '{Link}'
 const orderNumber = '{Pedido}'
 const protocolNumber = `{Protocolo}`
-const trys = `{Tentativas}`
-const date = '{Data}'
-const link = '{Link}'
-const store = '{Loja}'
-const address = '{Endereço}'
-const solicitacao = '{Solicitação}'
 const servico_instalacao = '{Servico_instalacao}'
-const amount = '{Quantidade}'
+const solicitacao = '{Solicitação}'
+const store = '{Loja}'
+const trys = `{Tentativas}`
+const weekday = '{Dia da semana}'
+const phoneNumber = `{Número de telefone}`
+const contact = `{Contato}`
 
 var leroyTemplates = [
   {
@@ -78,12 +82,12 @@ var leroyTemplates = [
     "namespace": "c5dee8f4-29e6-4af2-9f6a-7e9e8bfd2ab5"
   },
   {
-    "elementname": "protocolo",
+    "elementname": "protocolo_",
     "body": `Olá ${client}, tudo bem? \nMeu nome é ${agent} e gostaria de falar sobre o protocolo ${protocolNumber}. \nAguardamos o seu retorno, estamos à disposição para melhor atendê-la (o).`,
-    "namespace": "da7f95d6-1185-491f-b7f1-068c0cf95907"
+    "namespace": "822a1fdd-3aa6-4d0d-900f-2781c0dc5e4d"
   },
   {
-    "elementname": "cadastro_pendente",
+    "elementname": "cadastro_pendente1",
     "body": `Olá ${client}! Aqui é da Leroy Merlin, tudo bem? \nVerificamos que você possui um cadastro pendente para se tornar um parceiro INSTALA. \nCaso ainda tenha interesse em continuar o cadastro, acesse o Portal do Prestador e dê sequência na documentação pendente. ${orderNumber}`,
     "namespace": "6957cd07-8811-45df-92a5-31614de83418"
   },
@@ -98,7 +102,7 @@ var leroyTemplates = [
     "namespace": "c7b97222-65cb-4c69-937b-e3cb5c27bdcb"
   },
   {
-    "elementname": "imprevisto_entrega",
+    "elementname": "imprevisto_entrega1",
     "body": `Olá ${client}, tudo bem? \nTivemos um imprevisto com o seu pedido ${orderNumber}. \nMas não se preocupe, a nova data de entrega será ${date}.`,
     "namespace": "71e041f3-840d-4b30-b6a5-7fc190a54628"
   },
@@ -216,6 +220,26 @@ var leroyTemplates = [
     "elementname": "pontos_expiram",
     "body": `Olá ${client}! \nSeus ${amount} pontos Leroy Merlin Com Você expiram neste mês. Vá até uma de nossas lojas ou acesse nosso site / app e troque por DESCONTO agora mesmo!`,
     "namespace": "ca61f0d9-f3c9-4dba-8a24-fb39051cc48d"
+  },
+  {
+    "elementname": "cadastro_instala1",
+    "body": `Olá ${client}! \nAqui é da Leroy Merlin, tudo bem? \nVerificamos que você possui um cadastro pendente para se tornar um parceiro INSTALA. Caso ainda tenha interesse em continuar o cadastro, acesse o Portal do Prestador e dê sequência na documentação pendente. ${link}`,
+    "namespace": "9fe280e2-f39f-40cd-a4eb-8c1609a72dd5"
+  },
+  {
+    "elementname": "pedido_agendamento",
+    "body": `Olá, ${client} estou passando para lembrar que seu pedido nº ${orderNumber} está com entrega agendada para dia ${date}.`,
+    "namespace": "e0fc2958-9243-4f59-a2a9-318aa415da80"
+  },
+  {
+    "elementname": "convite_instala",
+    "body": `*CONVITE LEROY MERLIN INSTALA*\nEstamos em busca de parceiros, venha nos conhecer!\n*São alguns dos benefícios do Leroy Merlin Instala:*\nCadastro e oferta de serviços gratuitas pelo app;\nPossibilidade de ter um aumento de renda;\nAutonomia para definir os dias e períodos em que irá trabalhar;\nGaranta o seu crescimento profissional se associando à marca.\n*HORÁRIOS E DATAS*\n${date} ${weekday}\n${amount} turma (s)\n${hour} e ${hour}\n*ENDEREÇO*\n${address}`,
+    "namespace": "b713e3ae-eda5-464f-a4bc-82f67abf8323"
+  },
+  {
+    "elementname": "convite_instala_2",
+    "body": `Esta é uma oportunidade única para o seu negócio!\n\n*LEROY MERLIN INSTALA*\n\nEstamos em busca de parceiros, venha nos conhecer!\nSão alguns dos benefícios do Leroy Merlin Instala:\nCadastro e oferta de serviços gratuitos pelo app;\nPossibilidade de ter um aumento de renda;\nAutonomia para definir os dias e períodos em que irá trabalhar;\nGaranta o seu crescimento profissional se associando à marca LEROY MERLIN\n \n*Para mais informações entre em contato: ${phoneNumber} ${contact}*\n \n*Não perca essa oportunidade!*\n \n${date} \n${hour}\n${address}`,
+    "namespace": "9ebe7041-2370-420e-85dc-48b7dd5e668a"
   }
 ]
 
